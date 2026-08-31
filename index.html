@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="QA team release monitoring dashboard for release v2.4.0.">
+	<title>QA Release Dashboard | v2.4.0</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<div class="app-shell">
+		<header class="site-header">
+			<div class="brand-block">
+				<div class="brand-mark" aria-hidden="true">QA</div>
+				<div>
+					<p class="eyebrow">Release operations</p>
+					<h1>QA Release Dashboard</h1>
+					<p class="subtitle">Monitor builds, testing, releases, and deployment environments</p>
+				</div>
+			</div>
+			<div class="release-overview">
+				<div class="release-version">
+					<span>Current release</span>
+					<strong>v2.4.0</strong>
+				</div>
+				<span class="status-badge status-badge--ready"><span class="status-dot"></span>Ready for deployment</span>
+			</div>
+		</header>
+
+		<main>
+			<section class="summary-grid" aria-label="Release summary">
+				<article class="summary-card summary-card--blue">
+					<div class="card-icon" aria-hidden="true">&#35;</div>
+					<div><p>Build</p><strong>245</strong><span class="card-detail">Latest successful build</span></div>
+				</article>
+				<article class="summary-card summary-card--teal">
+					<div class="card-icon" aria-hidden="true">&#10003;</div>
+					<div><p>Total tests</p><strong>283</strong><span class="card-detail">Across all test suites</span></div>
+				</article>
+				<article class="summary-card summary-card--amber">
+					<div class="card-icon" aria-hidden="true">!</div>
+					<div><p>Open defects</p><strong>3</strong><span class="card-detail">1 high severity</span></div>
+				</article>
+				<article class="summary-card summary-card--green">
+					<div class="card-icon" aria-hidden="true">%</div>
+					<div><p>Test pass rate</p><strong>94.7%</strong><span class="card-detail">+2.1% from last release</span></div>
+				</article>
+			</section>
+
+			<section class="panel pipeline-panel" aria-labelledby="pipeline-title">
+				<div class="section-heading">
+					<div><p class="eyebrow">Delivery flow</p><h2 id="pipeline-title">CI/CD Pipeline</h2></div>
+					<span class="updated-label"><span class="live-dot"></span>Updated 8 min ago</span>
+				</div>
+				<ol class="pipeline" aria-label="CI/CD pipeline stages">
+					<li class="pipeline-stage is-complete"><span class="stage-marker">&#10003;</span><span>Commit</span></li>
+					<li class="pipeline-stage is-complete"><span class="stage-marker">&#10003;</span><span>Build</span></li>
+					<li class="pipeline-stage is-complete"><span class="stage-marker">&#10003;</span><span>Automated Tests</span></li>
+					<li class="pipeline-stage is-complete"><span class="stage-marker">&#10003;</span><span>QA</span></li>
+					<li class="pipeline-stage is-complete"><span class="stage-marker">&#10003;</span><span>UAT</span></li>
+					<li class="pipeline-stage is-complete"><span class="stage-marker">&#10003;</span><span>Staging</span></li>
+					<li class="pipeline-stage is-current"><span class="stage-marker">7</span><span>Production</span><small>Pending deployment</small></li>
+				</ol>
+			</section>
+
+			<div class="content-grid">
+				<section class="panel environment-panel" aria-labelledby="environment-title">
+					<div class="section-heading"><div><p class="eyebrow">Infrastructure</p><h2 id="environment-title">Environment Status</h2></div></div>
+					<ul class="environment-list">
+						<li><span class="environment-name">DEV</span><span class="environment-state is-deployed"><span class="state-icon">&#10003;</span>Deployed</span></li>
+						<li><span class="environment-name">QA</span><span class="environment-state is-deployed"><span class="state-icon">&#10003;</span>Deployed</span></li>
+						<li><span class="environment-name">UAT</span><span class="environment-state is-deployed"><span class="state-icon">&#10003;</span>Deployed</span></li>
+						<li><span class="environment-name">STAGING</span><span class="environment-state is-ready"><span class="state-icon">&#9679;</span>Ready</span></li>
+						<li><span class="environment-name">PRODUCTION</span><span class="environment-state is-pending"><span class="state-icon">&#9675;</span>Pending</span></li>
+					</ul>
+				</section>
+
+				<section class="panel execution-panel" aria-labelledby="execution-title">
+					<div class="section-heading"><div><p class="eyebrow">Quality signal</p><h2 id="execution-title">Test Execution Summary</h2></div><strong class="execution-total">283 <small>tests</small></strong></div>
+					<div class="progress-track" role="img" aria-label="94.7 percent of tests passed"><span></span></div>
+					<div class="execution-legend">
+						<div><span class="legend-swatch legend-swatch--passed"></span><strong>268</strong><small>Passed</small></div>
+						<div><span class="legend-swatch legend-swatch--failed"></span><strong>10</strong><small>Failed</small></div>
+						<div><span class="legend-swatch legend-swatch--blocked"></span><strong>5</strong><small>Blocked</small></div>
+					</div>
+				</section>
+			</div>
+
+			<section class="panel defects-panel" aria-labelledby="defects-title">
+				<div class="section-heading"><div><p class="eyebrow">Issue tracking</p><h2 id="defects-title">Recent Defects</h2></div><span class="table-count">3 active records</span></div>
+				<div class="table-wrap">
+					<table>
+						<thead><tr><th scope="col">Defect ID</th><th scope="col">Description</th><th scope="col">Severity</th><th scope="col">Status</th></tr></thead>
+						<tbody>
+							<tr><td><strong>BUG-101</strong></td><td>Login button not responding</td><td><span class="tag tag--high">High</span></td><td><span class="issue-status issue-status--open">Open</span></td></tr>
+							<tr><td><strong>BUG-102</strong></td><td>Incorrect validation message</td><td><span class="tag tag--medium">Medium</span></td><td><span class="issue-status issue-status--progress">In Progress</span></td></tr>
+							<tr><td><strong>BUG-103</strong></td><td>UI alignment issue</td><td><span class="tag tag--low">Low</span></td><td><span class="issue-status issue-status--resolved">Resolved</span></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<div class="bottom-grid">
+				<section class="panel release-info-panel" aria-labelledby="release-info-title">
+					<div class="section-heading"><div><p class="eyebrow">Release metadata</p><h2 id="release-info-title">Release Information</h2></div></div>
+					<dl class="release-details">
+						<div><dt>Release version</dt><dd>v2.4.0</dd></div><div><dt>Build number</dt><dd>#245</dd></div><div><dt>Branch</dt><dd>main</dd></div><div><dt>Last deployment</dt><dd>QA</dd></div><div><dt>Release owner</dt><dd>QA Team</dd></div>
+					</dl>
+				</section>
+				<section class="deploy-panel" aria-labelledby="deploy-title">
+					<div><p class="eyebrow">Production gate</p><h2 id="deploy-title">Ready to ship?</h2><p>All release checks are complete. Production is waiting for approval.</p></div>
+					<button type="button" id="deployReleaseButton">Deploy Release <span aria-hidden="true">&#8594;</span></button>
+					<p id="deploymentStatus" class="deployment-status" role="status" aria-live="polite">Deployment has not started</p>
+				</section>
+			</div>
+		</main>
+
+		<footer class="site-footer"><span>QA Release Dashboard</span><span>Release v2.4.0 <span class="footer-divider">|</span> Build #245</span></footer>
+	</div>
+</body>
+</html>

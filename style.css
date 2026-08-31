@@ -1,0 +1,847 @@
+:root {
+    --ink: #172433;
+    --muted: #6c7b8a;
+    --line: #e2e8ed;
+    --surface: #ffffff;
+    --canvas: #f3f6f8;
+    --navy: #153a59;
+    --blue: #2f72b8;
+    --teal: #1c8f8a;
+    --green: #3b9b6d;
+    --amber: #d28b30;
+    --red: #ca5c57;
+    --shadow: 0 8px 24px rgba(28, 51, 70, 0.06);
+}
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* =========================
+   MAIN APPLICATION CONTAINER
+========================= */
+
+.app-shell {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px 28px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    min-height: 160px;
+    padding: 34px 0;
+}
+
+.brand-block {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    flex: 0 0 54px;
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    background: var(--navy);
+    color: white;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 12px rgba(21, 58, 89, 0.18);
+}
+
+.eyebrow {
+    margin: 0 0 7px;
+    color: var(--blue);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+    margin-top: 0;
+}
+
+h1 {
+    margin-bottom: 5px;
+    color: var(--navy);
+    font-size: clamp(25px, 3vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.7px;
+}
+
+h2 {
+    margin-bottom: 0;
+    font-size: 19px;
+    line-height: 1.25;
+    letter-spacing: -0.2px;
+}
+
+.subtitle {
+    margin-bottom: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* =========================
+   RELEASE OVERVIEW
+========================= */
+
+.release-overview {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+}
+
+.release-version {
+    display: grid;
+    gap: 4px;
+    text-align: right;
+}
+
+.release-version span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.release-version strong {
+    color: var(--navy);
+    font-size: 23px;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 5px;
+    padding: 10px 13px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.status-badge--ready {
+    background: #e4f4ec;
+    color: #287b55;
+}
+
+.status-dot,
+.live-dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+main {
+    display: grid;
+    gap: 20px;
+}
+
+/* =========================
+   SUMMARY CARDS
+========================= */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 118px;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-top: 3px solid;
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.summary-card--blue {
+    border-top-color: var(--blue);
+}
+
+.summary-card--teal {
+    border-top-color: var(--teal);
+}
+
+.summary-card--amber {
+    border-top-color: var(--amber);
+}
+
+.summary-card--green {
+    border-top-color: var(--green);
+}
+
+.card-icon {
+    display: grid;
+    flex: 0 0 39px;
+    place-items: center;
+    width: 39px;
+    height: 39px;
+    border-radius: 9px;
+    background: #edf3f7;
+    color: var(--navy);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.summary-card p {
+    margin-bottom: 5px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.summary-card strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--navy);
+    font-size: 28px;
+    line-height: 1;
+}
+
+.card-detail {
+    color: #8795a1;
+    font-size: 11px;
+}
+
+/* =========================
+   COMMON PANEL
+========================= */
+
+.panel {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.pipeline-panel,
+.defects-panel,
+.release-info-panel,
+.execution-panel,
+.deploy-panel,
+.environment-panel {
+    padding: 25px 27px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.updated-label,
+.table-count {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.updated-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.live-dot {
+    color: var(--green);
+}
+
+/* =========================
+   CI/CD PIPELINE
+========================= */
+
+.pipeline {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pipeline-stage {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 9px;
+    min-width: 0;
+    color: #84919c;
+    font-size: 12px;
+    text-align: center;
+}
+
+.pipeline-stage:not(:last-child)::after {
+    position: absolute;
+    top: 14px;
+    left: calc(50% + 16px);
+    width: calc(100% - 32px);
+    height: 2px;
+    background: #dbe4e9;
+    content: "";
+}
+
+.pipeline-stage.is-complete {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.pipeline-stage.is-complete:not(:last-child)::after {
+    background: #66b493;
+}
+
+.stage-marker {
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #d4dde3;
+    border-radius: 50%;
+    background: white;
+    color: #a0acb5;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.pipeline-stage.is-complete .stage-marker {
+    border-color: var(--green);
+    background: var(--green);
+    color: white;
+}
+
+.pipeline-stage.is-current .stage-marker {
+    border-color: var(--amber);
+    color: var(--amber);
+}
+
+.pipeline-stage small {
+    color: var(--amber);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* =========================
+   TWO-COLUMN CONTENT
+========================= */
+
+.content-grid,
+.bottom-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 20px;
+}
+
+/* =========================
+   ENVIRONMENT STATUS
+========================= */
+
+.environment-list {
+    display: grid;
+    gap: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.environment-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+}
+
+.environment-name {
+    flex: 0 0 auto;
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.environment-state {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    min-width: 95px;
+    flex: 0 0 auto;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.state-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.is-deployed {
+    color: var(--green);
+}
+
+.is-ready {
+    color: var(--blue);
+}
+
+.is-pending {
+    color: var(--amber);
+}
+
+/* =========================
+   TEST EXECUTION SUMMARY
+========================= */
+
+.execution-total {
+    color: var(--navy);
+    font-size: 20px;
+}
+
+.execution-total small {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.progress-track {
+    height: 9px;
+    margin: 31px 0 25px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f4d9d7;
+}
+
+.progress-track span {
+    display: block;
+    width: 94.7%;
+    height: 100%;
+    background: var(--green);
+}
+
+.execution-legend {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.execution-legend div {
+    display: grid;
+    grid-template-columns: 8px auto;
+    column-gap: 8px;
+    align-items: center;
+}
+
+.execution-legend strong {
+    font-size: 18px;
+}
+
+.execution-legend small {
+    grid-column: 2;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.legend-swatch {
+    grid-row: span 2;
+    width: 8px;
+    height: 28px;
+    border-radius: 4px;
+}
+
+.legend-swatch--passed {
+    background: var(--green);
+}
+
+.legend-swatch--failed {
+    background: var(--red);
+}
+
+.legend-swatch--blocked {
+    background: var(--amber);
+}
+
+/* =========================
+   DEFECT TABLE
+========================= */
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 14px 12px;
+    border-top: 1px solid var(--line);
+    text-align: left;
+}
+
+th {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+td {
+    color: #41515e;
+    font-size: 13px;
+}
+
+td strong {
+    color: var(--navy);
+    font-size: 12px;
+}
+
+.tag,
+.issue-status {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.tag--high {
+    background: #fae7e5;
+    color: #bd504a;
+}
+
+.tag--medium {
+    background: #fff1dc;
+    color: #b27624;
+}
+
+.tag--low {
+    background: #e5f2ec;
+    color: #3d8d68;
+}
+
+.issue-status--open {
+    color: #bd504a;
+}
+
+.issue-status--progress {
+    color: #b27624;
+}
+
+.issue-status--resolved {
+    color: #3d8d68;
+}
+
+/* =========================
+   RELEASE INFORMATION
+========================= */
+
+.release-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 28px;
+    margin: 0;
+}
+
+.release-details div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 10px;
+}
+
+dt {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+dd {
+    margin: 0;
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+/* =========================
+   DEPLOYMENT PANEL
+========================= */
+
+.deploy-panel {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px 25px;
+    border-radius: 8px;
+    background: var(--navy);
+    color: white;
+}
+
+.deploy-panel .eyebrow {
+    color: #7fc8c1;
+}
+
+.deploy-panel h2 {
+    margin-bottom: 6px;
+    color: white;
+}
+
+.deploy-panel p:not(.eyebrow):not(.deployment-status) {
+    max-width: 410px;
+    margin: 0;
+    color: #b9cbd6;
+    font-size: 12px;
+}
+
+button {
+    border: 0;
+    border-radius: 5px;
+    padding: 13px 17px;
+    background: #e7b45d;
+    color: #263544;
+    font-size: 12px;
+    font-weight: 800;
+    transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover {
+    background: #f0c775;
+    transform: translateY(-1px);
+}
+
+button:focus-visible {
+    outline: 3px solid #7fc8c1;
+    outline-offset: 3px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+    transform: none;
+}
+
+.deployment-status {
+    flex-basis: 100%;
+    margin: 0;
+    color: #a9c1cc;
+    font-size: 11px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+    color: #8795a1;
+    font-size: 11px;
+}
+
+.footer-divider {
+    padding: 0 8px;
+    color: #c1ccd2;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+    .app-shell {
+        padding: 0 22px 25px;
+    }
+
+    .site-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 22px;
+        padding: 28px 0;
+    }
+
+    .release-overview {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pipeline {
+        grid-template-columns: repeat(7, minmax(105px, 1fr));
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+
+    .pipeline-stage:not(:last-child)::after {
+        width: calc(100% - 32px);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 620px) {
+    .app-shell {
+        padding: 0 15px 20px;
+    }
+
+    .brand-block {
+        align-items: flex-start;
+    }
+
+    .brand-mark {
+        flex-basis: 45px;
+        width: 45px;
+        height: 45px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .release-overview {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    .release-version {
+        text-align: left;
+    }
+
+    .summary-grid,
+    .content-grid,
+    .bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card {
+        min-height: 105px;
+    }
+
+    .pipeline-panel,
+    .defects-panel,
+    .release-info-panel,
+    .execution-panel,
+    .deploy-panel,
+    .environment-panel {
+        padding: 21px 18px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .pipeline-panel .section-heading {
+        flex-direction: row;
+    }
+
+    /* Environment Status on mobile */
+    .environment-list li {
+        min-height: 46px;
+        gap: 12px;
+    }
+
+    .environment-state {
+        font-size: 11px;
+    }
+
+    .release-details {
+        gap: 14px;
+    }
+
+    .release-details div {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    th,
+    td {
+        white-space: nowrap;
+    }
+
+    .site-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+    }
+}
