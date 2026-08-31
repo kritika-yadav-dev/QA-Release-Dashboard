@@ -62,6 +62,8 @@ pipeline {
                         git config user.name "Jenkins"
                         git config user.email "jenkins@example.com"
 
+                        if exist .git\\refs\\heads\\gh-pages git branch -D gh-pages
+
                         git checkout --orphan gh-pages
 
                         git rm -rf .
