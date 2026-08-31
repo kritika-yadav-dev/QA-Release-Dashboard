@@ -2,9 +2,8 @@ pipeline {
 
     agent any
 
-    environment {
-        GITHUB_CREDENTIALS = credentials('github-pat')
-        GITHUB_REPO = 'https://github.com/kritika-yadav-dev/QA-Release-Dashboard.git'
+    options {
+        skipDefaultCheckout(true)
     }
 
     stages {
@@ -51,24 +50,33 @@ pipeline {
 
                 echo 'Deploying website to GitHub Pages...'
 
-                bat '''
-                    git config user.name "Jenkins"
-                    git config user.email "jenkins@example.com"
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'github-pat',
+                        usernameVariable: 'GIT_USERNAME',
+                        passwordVariable: 'GIT_PASSWORD'
+                    )
+                ]) {
 
-                    git checkout --orphan gh-pages
+                    bat '''
+                        git config user.name "Jenkins"
+                        git config user.email "jenkins@example.com"
 
-                    git rm -rf .
+                        git checkout --orphan gh-pages
 
-                    copy /Y build\\index.html index.html
-                    copy /Y build\\style.css style.css
-                    copy /Y build\\script.js script.js
+                        git rm -rf .
 
-                    git add index.html style.css script.js
+                        copy /Y build\\index.html index.html
+                        copy /Y build\\style.css style.css
+                        copy /Y build\\script.js script.js
 
-                    git commit -m "Deploy QA Release Dashboard from Jenkins"
+                        git add index.html style.css script.js
 
-                    git push https://%GITHUB_CREDENTIALS_USR%:%GITHUB_CREDENTIALS_PSW%@github.com/kritika-yadav-dev/QA-Release-Dashboard.git gh-pages --force
-                '''
+                        git commit -m "Deploy QA Release Dashboard from Jenkins"
+
+                        git push https://%GIT_USERNAME%:%GIT_PASSWORD%@github.com/kritika-yadav-dev/QA-Release-Dashboard.git gh-pages --force
+                    '''
+                }
             }
         }
     }
@@ -76,7 +84,7 @@ pipeline {
     post {
         success {
             echo 'CI/CD pipeline completed successfully.'
-            echo 'QA Release Dashboard has been deployed.'
+            echo 'QA Release Dashboard deployed to GitHub Pages.'
         }
 
         failure {
