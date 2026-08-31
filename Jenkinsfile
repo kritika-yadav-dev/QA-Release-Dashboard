@@ -64,7 +64,7 @@ pipeline {
 
                         if exist .git\\refs\\heads\\gh-pages git branch -D gh-pages
 
-                        git checkout --orphan gh-pages
+                        git checkout -B gh-pages
 
                         git rm -rf .
 
