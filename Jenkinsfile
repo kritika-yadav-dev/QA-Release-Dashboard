@@ -45,6 +45,13 @@ pipeline {
             }
         }
 
+        stage('Production Approval') {
+            steps {
+                input message: 'Do you approve deployment to Production?',
+                      ok: 'Approve Deployment'
+            }
+        }
+
         stage('Deploy to GitHub Pages') {
             steps {
 
